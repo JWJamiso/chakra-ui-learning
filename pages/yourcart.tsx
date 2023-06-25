@@ -1,14 +1,28 @@
-import { Heading, Text, VStack, HStack, Button, AspectRatio, Image, Stack, Divider } from "@chakra-ui/react";
+import {
+	Heading,
+	Text,
+	VStack,
+	HStack,
+	Button,
+	AspectRatio,
+	Image,
+	Stack,
+	Divider,
+	useColorMode,
+	useColorModeValue,
+} from "@chakra-ui/react";
 
 const YourCart = () => {
+	const { toggleColorMode } = useColorMode();
+	const bgColor = useColorModeValue("gray.50", "whiteAlpha.50");
 	return (
-		<VStack w="full" h="full" p={10} spacing={10} alignItems={"flex-start"} bg="gray.50">
+		<VStack w="full" h="full" p={10} spacing={10} alignItems={"flex-start"} bg={bgColor}>
 			<VStack spacing={3} alignItems={"flex-start"}>
 				<Heading size="2xl">Your Cart</Heading>
 				<Text>
 					If your price is too hard on your eyes,
 					<br />
-					<Button variant="link" colorScheme="black">
+					<Button onClick={toggleColorMode} variant="link" colorScheme="black">
 						Try changing the color scheme
 					</Button>
 				</Text>
@@ -36,17 +50,17 @@ const YourCart = () => {
 				</HStack>
 				<HStack justifyContent="space-between">
 					<Text>Shipping</Text>
-					<Text fontWeight="bold">$19.00</Text>
+					<Text fontWeight="bold">$19.99</Text>
 				</HStack>
 				<HStack justifyContent="space-between">
 					<Text>Taxes</Text>
-					<Text fontWeight="bold">$29.00</Text>
+					<Text fontWeight="bold">$23.80</Text>
 				</HStack>
 			</VStack>
 			<Divider />
 			<HStack justifyContent="space-between" w="full">
 				<Text>Total</Text>
-				<Heading size="lg">$119.00</Heading>
+				<Heading size="lg">$162.79</Heading>
 			</HStack>
 		</VStack>
 	);
